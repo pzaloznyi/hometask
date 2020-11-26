@@ -14,7 +14,7 @@ namespace hometasksolution
             var externalIp = await httpClient.GetStringAsync("http://icanhazip.com");
             var ipLocationJson = await httpClient.GetStringAsync($"http://ip-api.com/json/{externalIp}");
             var ipLocation = JsonConvert.DeserializeObject<IpLocation>(ipLocationJson);
-            var url = $"http://api.openweathermap.org/data/2.5/weather?lat={ipLocation.lat}&lon={ipLocation.lon}&appid=a076306b759a2a7ddb20e5703dd52b4a";
+            var url = $"http://api.openweathermap.org/data/2.5/weather?lat={ipLocation.lat}&lon={ipLocation.lon}&appid={openWeatherMapAppId}";
             var weatherJson = await httpClient.GetStringAsync(url);
             var weather = JsonConvert.DeserializeObject<WeatherObject>(weatherJson);
             var weat = weather.weather.First();
